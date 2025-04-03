@@ -41,8 +41,8 @@ System Zarządzania Wydarzeniami to aplikacja webowa oparta na Django, która um
 
 1. Sklonuj repozytorium:
    ```
-   git clone https://github.com/twoj_username/event-manager.git
-   cd event-manager
+   git clone git@github.com:Dzial-Promocji-UwS/rekrutacja-front-django-04-2025.git
+   cd rekrutacja-front-django-04-2025
    ```
 
 2. Utwórz i aktywuj wirtualne środowisko:
@@ -191,11 +191,11 @@ coverage report
 coverage html
 ```
 
-## Zadanie rekrutacyjne dla frontend developera
+## Opis zadania rekrutacyjnego
 
-W katalogu `templates/events/` znajdują się szablony zadań rekrutacyjnych dla frontend developera. Każdy szablon zawiera szczegółowy opis zadania, dane przekazywane do szablonu oraz wymagania implementacyjne.
+W katalogu `templates/events/` znajdują się szablony zadań rekrutacyjnych. Każdy szablon zawiera szczegółowy opis zadania, dane przekazywane do szablonu oraz wymagania implementacyjne.
 
-### Uruchomienie zadania rekrutacyjnego
+### Uruchomienie 
 
 1. Sklonuj repozytorium i zainstaluj zależności zgodnie z instrukcjami w sekcji [Instalacja](#instalacja)
 2. Uruchom serwer deweloperski:
@@ -220,7 +220,7 @@ W ramach zadania rekrutacyjnego należy zaimplementować następujące cztery sz
 
 Każdy szablon zawiera dokładny opis zadania, wymagania i dane przekazywane z backendu. Do implementacji kalendarza w `monthly_events.html` można wykorzystać dowolny framework JavaScript (np. FullCalendar, Calendar.js).
 
-### Zaimplementowane zadania rekrutacyjne:
+### ZADANIA:
 
 1. **Strona główna** (`index.html`) - implementacja strony głównej systemu z sekcją powitalną i listą nadchodzących wydarzeń.
    - Wyświetlanie podstawowych informacji o systemie
@@ -255,6 +255,3 @@ Każdy szablon zawiera dokładny opis zadania, wymagania i dane przekazywane z b
 
 Każde zadanie zawiera szczegółowe informacje o danych przekazywanych do szablonu, elementach do zaimplementowania oraz wytycznych dotyczących dostępności.
 
-## Licencja
-
-Ten projekt jest dostępny na licencji MIT.
