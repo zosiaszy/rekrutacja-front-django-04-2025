@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Zadanie rekrutacyjne - Formularz wydarzenia" %}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="border-bottom pb-2">{% translate "Zadanie rekrutacyjne - Formularz wydarzenia" %}</h1>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Opis zadania" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Twoim zadaniem jest zaimplementowanie formularza do tworzenia i edycji wydarzeń zgodnie z poniższą specyfikacją. Formularz powinien umożliwiać użytkownikom wprowadzanie wszystkich niezbędnych informacji o wydarzeniu w intuicyjny sposób." %}</p>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "Wymagania ogólne:" %}</h3>
+                    <ul>
+                        <li>{% translate "Implementacja musi być w pełni zgodna ze standardami WCAG AAA (Web Content Accessibility Guidelines)." %}</li>
+                        <li>{% translate "Design musi być responsywny i działać poprawnie na urządzeniach mobilnych, tabletach i desktopach." %}</li>
+                        <li>{% translate "Wszystkie elementy interfejsu muszą być zgodne z księgą znaku Uniwersytetu w Siedlcach." %}</li>
+                        <li>{% translate "Podstawowy kolor marki to #003d7c. Użyj go jako głównego koloru akcentowego." %}</li>
+                        <li>{% translate "Należy wykorzystać Bootstrap 5 jako bazowy framework CSS." %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Dane przekazywane do szablonu" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Do szablonu przekazywane są następujące dane:" %}</p>
+                    
+                    <h3 class="fs-5 mt-3">{% translate "1. Tytuł formularza (title):" %}</h3>
+                    <ul>
+                        <li>{% translate "Zmienna 'title' - określa czy jest to formularz tworzenia ('Utwórz wydarzenie') czy edycji ('Edytuj wydarzenie')" %}</li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "2. Formularz wydarzenia (form):" %}</h3>
+                    <ul>
+                        <li>{% translate "Obiekt formularza Django z następującymi polami:" %}
+                            <ul>
+                                <li><code>form.name</code> - {% translate "pole nazwy wydarzenia (text)" %}</li>
+                                <li><code>form.description</code> - {% translate "pole opisu wydarzenia (textarea)" %}</li>
+                                <li><code>form.start_date</code> - {% translate "pole daty i czasu rozpoczęcia (datetime)" %}</li>
+                                <li><code>form.end_date</code> - {% translate "pole daty i czasu zakończenia (datetime)" %}</li>
+                                <li><code>form.location</code> - {% translate "pole lokalizacji (text)" %}</li>
+                                <li><code>form.mode</code> - {% translate "pole trybu wydarzenia (select: online/stacjonarny/hybrydowy)" %}</li>
+                                <li><code>form.organizer</code> - {% translate "pole organizatora (text)" %}</li>
+                                <li><code>form.color</code> - {% translate "pole koloru wydarzenia (color picker)" %}</li>
+                                <li><code>form.capacity</code> - {% translate "pole pojemności wydarzenia (number)" %}</li>
+                            </ul>
+                        </li>
+                        <li>{% translate "Dla każdego pola formularza dostępne są następujące atrybuty:" %}
+                            <ul>
+                                <li><code>field.label</code> - {% translate "etykieta pola" %}</li>
+                                <li><code>field.id_for_label</code> - {% translate "identyfikator HTML dla etykiety" %}</li>
+                                <li><code>field.field.required</code> - {% translate "czy pole jest wymagane (boolean)" %}</li>
+                                <li><code>field.errors</code> - {% translate "błędy walidacji pola (jeśli istnieją)" %}</li>
+                            </ul>
+                        </li>
+                        <li><code>form.non_field_errors</code> - {% translate "błędy walidacji na poziomie formularza (jeśli istnieją)" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Elementy do zaimplementowania" %}</h2>
+                </div>
+                <div class="card-body">
+                    <h3 class="fs-5">{% translate "1. Nawigacja:" %}</h3>
+                    <ul>
+                        <li>{% translate "Ścieżka nawigacyjna (breadcrumb) pokazująca hierarchię: Strona główna > Wydarzenia > Utwórz/Edytuj wydarzenie" %}</li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "2. Karta formularza:" %}</h3>
+                    <ul>
+                        <li>{% translate "Nagłówek karty z tytułem formularza (Utwórz/Edytuj wydarzenie)" %}</li>
+                        <li>{% translate "Formularz podzielony na logiczne sekcje z użyciem fieldsetów i legend:" %}
+                            <ul>
+                                <li>{% translate "Sekcja 'Informacje o wydarzeniu' (nazwa, opis)" %}</li>
+                                <li>{% translate "Sekcja 'Data i czas' (data rozpoczęcia, data zakończenia)" %}</li>
+                                <li>{% translate "Sekcja 'Lokalizacja' (miejsce, tryb wydarzenia)" %}</li>
+                                <li>{% translate "Sekcja 'Organizacja' (organizator, kolor wydarzenia)" %}</li>
+                                <li>{% translate "Sekcja 'Pojemność' (maksymalna liczba uczestników)" %}</li>
+                            </ul>
+                        </li>
+                        <li>{% translate "Każde pole formularza powinno zawierać:" %}
+                            <ul>
+                                <li>{% translate "Prawidłową etykietę z oznaczeniem pól wymaganych" %}</li>
+                                <li>{% translate "Pole formularza z odpowiednimi atrybutami dostępności" %}</li>
+                                <li>{% translate "Wyświetlanie błędów walidacji (jeśli wystąpią)" %}</li>
+                                <li>{% translate "Opcjonalnie tekst pomocniczy (dla wybranych pól)" %}</li>
+                            </ul>
+                        </li>
+                        <li>{% translate "Sekcja błędów formularza (wyświetlana, gdy wystąpią błędy na poziomie formularza)" %}</li>
+                        <li>{% translate "Przyciski akcji:" %}
+                            <ul>
+                                <li>{% translate "Przycisk 'Anuluj' (przekierowujący do listy wydarzeń)" %}</li>
+                                <li>{% translate "Przycisk 'Zapisz wydarzenie' (wysyłający formularz)" %}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Uwagi dotyczące dostępności" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Implementacja formularza musi spełniać następujące wymagania WCAG AAA:" %}</p>
+                    <ul>
+                        <li>{% translate "Wszystkie pola formularza muszą mieć jawnie powiązane etykiety (używając for/id)" %}</li>
+                        <li>{% translate "Pola wymagane muszą być wyraźnie oznaczone zarówno wizualnie jak i semantycznie (aria-required)" %}</li>
+                        <li>{% translate "Komunikaty o błędach muszą być powiązane z odpowiednimi polami (aria-describedby)" %}</li>
+                        <li>{% translate "Grupy powiązanych pól muszą być pogrupowane za pomocą elementów fieldset i legend" %}</li>
+                        <li>{% translate "Formularz musi być możliwy do nawigacji i używania wyłącznie za pomocą klawiatury" %}</li>
+                        <li>{% translate "Struktura formularza musi zachowywać logiczną kolejność nawigacji (tabindex)" %}</li>
+                        <li>{% translate "Atrybuty pomocnicze (placeholder, aria-describedby) powinny być używane do dostarczania dodatkowych informacji" %}</li>
+                        <li>{% translate "Kontrasty kolorystyczne muszą spełniać wymagania WCAG AAA (7:1)" %}</li>
+                    </ul>
+                    
+                    <p class="mt-4">{% translate "Linki referencyjne:" %}</p>
+                    <ul>
+                        <li><a href="https://www.uws.edu.pl/images/UPH_2023/szablon/logo-UwS/UWS-ksiega-znaku.pdf" target="_blank" rel="noopener noreferrer">{% translate "Księga znaku Uniwersytetu w Siedlcach" %}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&levels=aaa" target="_blank" rel="noopener noreferrer">{% translate "Wytyczne WCAG 2.1 AAA" %}</a></li>
+                        <li><a href="https://www.w3.org/WAI/tutorials/forms/" target="_blank" rel="noopener noreferrer">{% translate "Poradnik WAI dot. formularzy" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

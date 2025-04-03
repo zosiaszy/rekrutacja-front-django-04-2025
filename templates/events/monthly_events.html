@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Zadanie rekrutacyjne - Widok miesięczny wydarzeń" %}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="border-bottom pb-2">{% translate "Zadanie rekrutacyjne - Widok miesięczny wydarzeń" %}</h1>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Opis zadania" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Twoim zadaniem jest zaimplementowanie widoku kalendarza miesięcznego wydarzeń. Widok ten powinien prezentować wszystkie wydarzenia w danym miesiącu w formie kalendarza, umożliwiając użytkownikom łatwe przeglądanie wydarzeń w kontekście czasu." %}</p>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "Wymagania ogólne:" %}</h3>
+                    <ul>
+                        <li>{% translate "Implementacja musi być w pełni zgodna ze standardami WCAG AAA (Web Content Accessibility Guidelines)." %}</li>
+                        <li>{% translate "Design musi być responsywny i działać poprawnie na urządzeniach mobilnych, tabletach i desktopach." %}</li>
+                        <li>{% translate "Wszystkie elementy interfejsu muszą być zgodne z księgą znaku Uniwersytetu w Siedlcach." %}</li>
+                        <li>{% translate "Podstawowy kolor marki to #003d7c. Użyj go jako głównego koloru akcentowego." %}</li>
+                        <li>{% translate "Możesz użyć dowolnego frameworka JavaScript do implementacji kalendarza (np. FullCalendar, Calendar.js itp.)." %}</li>
+                        <li>{% translate "Bazowy framework CSS to Bootstrap 5, ale możesz dostosować go do potrzeb wybranego frameworka kalendarza." %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Dane przekazywane do szablonu" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Do szablonu przekazywane są następujące dane:" %}</p>
+                    
+                    <h3 class="fs-5 mt-3">{% translate "1. Dane dotyczące miesiąca:" %}</h3>
+                    <ul>
+                        <li><code>month_name</code> - {% translate "nazwa bieżącego miesiąca (string)" %}</li>
+                        <li><code>year</code> - {% translate "bieżący rok (integer)" %}</li>
+                        <li><code>prev_month</code> - {% translate "numer poprzedniego miesiąca (integer)" %}</li>
+                        <li><code>prev_year</code> - {% translate "rok dla poprzedniego miesiąca (integer)" %}</li>
+                        <li><code>next_month</code> - {% translate "numer następnego miesiąca (integer)" %}</li>
+                        <li><code>next_year</code> - {% translate "rok dla następnego miesiąca (integer)" %}</li>
+                        <li><code>current_month</code> - {% translate "numer bieżącego miesiąca (string z dopełnieniem zera)" %}</li>
+                        <li><code>today_date</code> - {% translate "dzisiejsza data w formacie YYYY-MM-DD (string)" %}</li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "2. Dane kalendarza:" %}</h3>
+                    <ul>
+                        <li><code>calendar</code> - {% translate "dwuwymiarowa lista reprezentująca dni miesiąca pogrupowane w tygodnie" %}</li>
+                        <li>{% translate "Wartości w kalendarzu:" %}
+                            <ul>
+                                <li>{% translate "0 - miejsce puste (dzień nie należy do bieżącego miesiąca)" %}</li>
+                                <li>{% translate "1-31 - numer dnia miesiąca" %}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "3. Lista wydarzeń:" %}</h3>
+                    <ul>
+                        <li><code>events</code> - {% translate "kolekcja obiektów wydarzeń w danym miesiącu, gdzie każde wydarzenie (event) zawiera:" %}
+                            <ul>
+                                <li><code>event.name</code> - {% translate "nazwa wydarzenia (string)" %}</li>
+                                <li><code>event.description</code> - {% translate "opis wydarzenia (text)" %}</li>
+                                <li><code>event.start_date</code> - {% translate "data i czas rozpoczęcia (datetime)" %}</li>
+                                <li><code>event.location</code> - {% translate "miejsce wydarzenia (string)" %}</li>
+                                <li><code>event.get_mode_display</code> - {% translate "tryb wydarzenia (string)" %}</li>
+                                <li><code>event.color</code> - {% translate "kolor wydarzenia (string w formacie HEX)" %}</li>
+                                <li><code>event.pk</code> - {% translate "identyfikator wydarzenia (integer)" %}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Wymagane funkcje kalendarza" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Twój kalendarz wydarzeń powinien oferować następujące funkcje:" %}</p>
+                    
+                    <h3 class="fs-5">{% translate "1. Główne funkcje:" %}</h3>
+                    <ul>
+                        <li>{% translate "Nagłówek strony z tytułem 'Kalendarz wydarzeń'" %}</li>
+                        <li>{% translate "Wyświetlanie bieżącego miesiąca i roku" %}</li>
+                        <li>{% translate "Nawigacja między miesiącami (poprzedni/następny)" %}</li>
+                        <li>{% translate "Przycisk powrotu do bieżącego miesiąca" %}</li>
+                        <li>{% translate "Przycisk 'Utwórz wydarzenie' przekierowujący do formularza tworzenia wydarzenia" %}</li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "2. Wyświetlanie wydarzeń:" %}</h3>
+                    <ul>
+                        <li>{% translate "Wyraźne oznaczenie dni z wydarzeniami" %}</li>
+                        <li>{% translate "Wyróżnienie bieżącego dnia" %}</li>
+                        <li>{% translate "Dla każdego wydarzenia widocznego w kalendarzu należy wyświetlić co najmniej:" %}
+                            <ul>
+                                <li>{% translate "Nazwę wydarzenia (z możliwością kliknięcia, aby zobaczyć szczegóły)" %}</li>
+                                <li>{% translate "Godzinę rozpoczęcia" %}</li>
+                                <li>{% translate "Wizualne oznaczenie (kolor) odpowiadające kategorii wydarzenia" %}</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "3. Dodatkowe funkcje:" %}</h3>
+                    <ul>
+                        <li>{% translate "Możliwość wyświetlenia dodatkowych informacji o wydarzeniu po najechaniu myszką (tooltip) lub kliknięciu" %}</li>
+                        <li>{% translate "Responsywne zachowanie kalendarza na różnych urządzeniach" %}</li>
+                        <li>{% translate "Wyraźny komunikat, gdy w danym miesiącu nie ma żadnych wydarzeń" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Uwagi dotyczące dostępności" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Implementacja widoku miesięcznego musi spełniać następujące wymagania WCAG AAA:" %}</p>
+                    <ul>
+                        <li>{% translate "Kalendarz musi być w pełni dostępny dla czytników ekranu" %}</li>
+                        <li>{% translate "Nawigacja kalendarza musi być możliwa za pomocą klawiatury" %}</li>
+                        <li>{% translate "Bieżący dzień musi być wyróżniony zarówno wizualnie jak i semantycznie" %}</li>
+                        <li>{% translate "Wydarzenia w kalendarzu muszą być dostępne dla czytników ekranu" %}</li>
+                        <li>{% translate "Informacje przekazywane przez kolor muszą być dostępne również w inny sposób" %}</li>
+                        <li>{% translate "Kontrast kolorystyczny musi spełniać wymagania WCAG AAA (7:1)" %}</li>
+                        <li>{% translate "Przejścia między miesiącami nie mogą powodować dezorientacji użytkownika" %}</li>
+                        <li>{% translate "Wszystkie interaktywne elementy muszą mieć odpowiednie etykiety ARIA" %}</li>
+                    </ul>
+                    
+                    <p class="mt-4">{% translate "Linki referencyjne:" %}</p>
+                    <ul>
+                        <li><a href="https://www.uws.edu.pl/images/UPH_2023/szablon/logo-UwS/UWS-ksiega-znaku.pdf" target="_blank" rel="noopener noreferrer">{% translate "Księga znaku Uniwersytetu w Siedlcach" %}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&levels=aaa" target="_blank" rel="noopener noreferrer">{% translate "Wytyczne WCAG 2.1 AAA" %}</a></li>
+                        <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/calendar/" target="_blank" rel="noopener noreferrer">{% translate "Wzorzec kalendarza ARIA" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

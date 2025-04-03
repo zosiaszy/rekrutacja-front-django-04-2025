@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% translate "Zadanie rekrutacyjne - Szczegóły wydarzenia" %}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="border-bottom pb-2">{% translate "Zadanie rekrutacyjne - Szczegóły wydarzenia" %}</h1>
+        </div>
+    </div>
+    
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Opis zadania" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Twoim zadaniem jest zaimplementowanie widoku szczegółów wydarzenia zgodnie z poniższą specyfikacją. Widok ten powinien prezentować wszystkie istotne informacje o wydarzeniu." %}</p>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "Wymagania ogólne:" %}</h3>
+                    <ul>
+                        <li>{% translate "Implementacja musi być w pełni zgodna ze standardami WCAG AAA (Web Content Accessibility Guidelines)." %}</li>
+                        <li>{% translate "Design musi być responsywny i działać poprawnie na urządzeniach mobilnych, tabletach i desktopach." %}</li>
+                        <li>{% translate "Wszystkie elementy interfejsu muszą być zgodne z księgą znaku Uniwersytetu w Siedlcach." %}</li>
+                        <li>{% translate "Podstawowy kolor marki to #003d7c. Użyj go jako głównego koloru akcentowego." %}</li>
+                        <li>{% translate "Należy wykorzystać Bootstrap 5 jako bazowy framework CSS." %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Dane przekazywane do szablonu" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Do szablonu przekazywane są następujące dane:" %}</p>
+                    
+                    <h3 class="fs-5 mt-3">{% translate "1. Obiekt wydarzenia (event):" %}</h3>
+                    <ul>
+                        <li><code>event.name</code> - {% translate "nazwa wydarzenia (string)" %}</li>
+                        <li><code>event.description</code> - {% translate "opis wydarzenia (text)" %}</li>
+                        <li><code>event.start_date</code> - {% translate "data i czas rozpoczęcia (datetime)" %}</li>
+                        <li><code>event.end_date</code> - {% translate "data i czas zakończenia (datetime)" %}</li>
+                        <li><code>event.location</code> - {% translate "miejsce wydarzenia (string)" %}</li>
+                        <li><code>event.mode</code> - {% translate "tryb wydarzenia (integer, mapowany na 'online', 'stacjonarny', 'hybrydowy')" %}</li>
+                        <li><code>event.get_mode_display</code> - {% translate "przetłumaczona nazwa trybu (string)" %}</li>
+                        <li><code>event.organizer</code> - {% translate "organizator wydarzenia (string)" %}</li>
+                        <li><code>event.capacity</code> - {% translate "maksymalna liczba uczestników (integer)" %}</li>
+                        <li><code>event.color</code> - {% translate "kolor wydarzenia (string w formacie HEX)" %}</li>
+                        <li><code>event.created_at</code> - {% translate "data utworzenia wydarzenia (datetime)" %}</li>
+                        <li><code>event.updated_at</code> - {% translate "data ostatniej aktualizacji (datetime)" %}</li>
+                        <li><code>event.pk</code> - {% translate "identyfikator wydarzenia (integer)" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Elementy do zaimplementowania" %}</h2>
+                </div>
+                <div class="card-body">
+                    <h3 class="fs-5">{% translate "1. Nawigacja:" %}</h3>
+                    <ul>
+                        <li>{% translate "Ścieżka nawigacyjna (breadcrumb) pokazująca hierarchię: Strona główna > Wydarzenia > Nazwa wydarzenia" %}</li>
+                        <li>{% translate "Przycisk edycji wydarzenia (widoczny tylko dla uprawnionych użytkowników)" %}</li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "2. Karta główna wydarzenia:" %}</h3>
+                    <ul>
+                        <li>{% translate "Nagłówek karty z nazwą wydarzenia i tłem w kolorze wydarzenia" %}</li>
+                        <li>{% translate "Sekcja z opisem wydarzenia" %}</li>
+                        <li>{% translate "Sekcja z datą i czasem (początek i koniec)" %}</li>
+                        <li>{% translate "Sekcja z lokalizacją i trybem wydarzenia (online/stacjonarny/hybrydowy)" %}</li>
+                        <li>{% translate "Sekcja z informacją o organizatorze" %}</li>
+                    </ul>
+                    
+                    <h3 class="fs-5 mt-4">{% translate "4. Dodatkowe informacje:" %}</h3>
+                    <ul>
+                        <li>{% translate "Sekcja z datą utworzenia wydarzenia" %}</li>
+                        <li>{% translate "Sekcja z datą ostatniej aktualizacji" %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" style="background-color: #003d7c; color: white;">
+                    <h2 class="card-title fs-4 mb-0">{% translate "Uwagi dotyczące dostępności" %}</h2>
+                </div>
+                <div class="card-body">
+                    <p>{% translate "Implementacja musi spełniać następujące wymagania WCAG AAA:" %}</p>
+                    <ul>
+                        <li>{% translate "Wszystkie elementy interaktywne muszą być dostępne z klawiatury" %}</li>
+                        <li>{% translate "Struktura nagłówków musi być logiczna i hierarchiczna (h1 > h2 > h3)" %}</li>
+                        <li>{% translate "Kontrasty kolorystyczne muszą spełniać wymagania WCAG AAA (7:1)" %}</li>
+                        <li>{% translate "Wszystkie elementy nietekstowe muszą mieć alternatywę tekstową" %}</li>
+                        <li>{% translate "Rozmiar tekstu musi być skalowalny bez utraty funkcjonalności" %}</li>
+                        <li>{% translate "Należy użyć atrybutów ARIA tam, gdzie jest to konieczne" %}</li>
+                    </ul>
+                    
+                    <p class="mt-4">{% translate "Linki referencyjne:" %}</p>
+                    <ul>
+                        <li><a href="https://www.uws.edu.pl/images/UPH_2023/szablon/logo-UwS/UWS-ksiega-znaku.pdf" target="_blank" rel="noopener noreferrer">{% translate "Księga znaku Uniwersytetu w Siedlcach" %}</a></li>
+                        <li><a href="https://www.w3.org/WAI/WCAG21/quickref/?versions=2.1&levels=aaa" target="_blank" rel="noopener noreferrer">{% translate "Wytyczne WCAG 2.1 AAA" %}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
