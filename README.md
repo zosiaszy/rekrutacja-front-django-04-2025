@@ -41,7 +41,7 @@ System Zarządzania Wydarzeniami to aplikacja webowa oparta na Django, która um
 
 1. Sklonuj repozytorium:
    ```
-   git clone git@github.com:Dzial-Promocji-UwS/rekrutacja-front-django-04-2025.git
+   git clone https://github.com/Dzial-Promocji-UwS/rekrutacja-front-django-04-2025.git
    cd rekrutacja-front-django-04-2025
    ```
 
