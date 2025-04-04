@@ -113,6 +113,10 @@ def monthly_events(request, year=None, month=None):
     if next_month == 13:
         next_month = 1
         next_year += 1
+    
+    # Get today's date for highlighting the current day in the calendar
+    today = timezone.now()
+    today_date = today.strftime('%Y-%m-%d')
         
     return render(request, 'events/monthly_events.html', {
         'events': events,
@@ -124,4 +128,5 @@ def monthly_events(request, year=None, month=None):
         'next_month': next_month,
         'next_year': next_year,
         'current_month': month,
+        'today_date': today_date,
     })
