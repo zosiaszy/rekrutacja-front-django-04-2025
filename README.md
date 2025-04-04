@@ -255,3 +255,44 @@ Każdy szablon zawiera dokładny opis zadania, wymagania i dane przekazywane z b
 
 Każde zadanie zawiera szczegółowe informacje o danych przekazywanych do szablonu, elementach do zaimplementowania oraz wytycznych dotyczących dostępności.
 
+
+
+## \*Zadanie dodatkowe: Wdrożenie narzędzi wspierających dostępność (funkcje typu [UserWay](https://userway.org/))
+
+
+
+### Cel
+
+Wdrożenie zestawu funkcjonalności wspierających dostępność strony internetowej, umożliwiających użytkownikom dostosowanie sposobu wyświetlania treści. Rozwiązania mają na celu poprawę użyteczności serwisu dla osób z niepełnosprawnością wzroku lub trudnościami w czytaniu.
+
+Przykładowy zakres prac udostępniono poniżej, natomiast implementacja końcowa zależy jedynie od Ciebie. Jeżeli uważasz, że jakieś funkcje są zbędne lub dodatkowo potrzebne, pozostawiamy Ci dowolność.
+
+
+
+Uwaga! 
+
+Narzędzie musi być w pełni zgodne ze standardami WCAG AAA.
+
+---
+
+### Przykładowy zakres prac
+
+#### 1. Widoczny widget dostępności
+
+- Umieszczenie w stałym miejscu (np. prawy górny róg) ikony lub przycisku otwierającego panel dostępności.
+- Pełna obsługa przy pomocy klawiatury i czytników ekranu (ARIA, role, focus management).
+
+#### 2. Zmiana rozmiaru tekstu
+
+#### 3. Zmiana kontrastu kolorystycznego
+
+#### 4. Wyłączenie animacji
+
+#### 5. Zapamiętywanie preferencji użytkownika
+
+#### 6. Skróty klawiszowe do obsługi widgetu
+
+#### 7. Testy i zgodność z WCAG (warunek konieczny - całość musi być zgodna z WCAG na poziomie AAA)
+
+
+
