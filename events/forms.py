@@ -21,7 +21,15 @@ class EventForm(forms.ModelForm):
         # Add Bootstrap classes to form fields
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
-            
+
+        self.fields['name'].widget.attrs['placeholder'] = _('Wprowadź nazwę wydarzenia')
+        self.fields['description'].widget.attrs['placeholder'] = _('Opisz wydarzenie')
+        self.fields['start_date'].widget.attrs['placeholder'] = _('Wybierz datę i godzinę rozpoczęcia')
+        self.fields['end_date'].widget.attrs['placeholder'] = _('Wybierz datę i godzinę zakończenia')
+        self.fields['location'].widget.attrs['placeholder'] = _('Podaj miejsce wydarzenia')
+        self.fields['organizer'].widget.attrs['placeholder'] = _('Nazwa organizatora')
+        self.fields['capacity'].widget.attrs['placeholder'] = _('Maksymalna liczba uczestników')
+
     def clean(self):
         cleaned_data = super().clean()
         start_date = cleaned_data.get('start_date')
