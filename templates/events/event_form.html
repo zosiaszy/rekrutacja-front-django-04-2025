@@ -5,7 +5,7 @@
 
 {% block content %}
 <div class="container py-5 px-4 bg-white shadow rounded-3" aria-labelledby="form-title" style="max-width: 800px;">
-    <!-- Breadcrumb -->
+
     <nav aria-label="{% translate 'Ścieżka nawigacyjna' %}" class="mb-4">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{% url 'events:index' %}">{% translate 'Strona główna' %}</a></li>
@@ -25,7 +25,6 @@
             </div>
         {% endif %}
 
-        <!-- Informacje o wydarzeniu -->
         <fieldset class="mb-4 border-start border-3 ps-3 border-primary-subtle">
             <legend class="fs-5 mb-3">{% translate "Informacje o wydarzeniu" %}</legend>
 
@@ -34,7 +33,7 @@
                     {% translate 'Nazwa' %} <span class="text-danger">*</span>
                 </label>
                 {{ form.name }}
-                <div class="form-text" id="{{ form.name.id_for_label }}-help"></div>
+                <div class="form-text" id="{{ form.name.id_for_label }}-help">git </div>
                 {% if form.name.errors %}
                     <div class="invalid-feedback d-block" id="{{ form.name.id_for_label }}-error">
                         {{ form.name.errors|striptags }}
@@ -55,7 +54,6 @@
             </div>
         </fieldset>
 
-        <!-- Data i czas -->
         <fieldset class="mb-4 border-start border-3 ps-3 border-primary-subtle">
             <legend class="fs-5 mb-3">{% translate "Data i czas" %}</legend>
 
@@ -84,7 +82,6 @@
             </div>
         </fieldset>
 
-        <!-- Lokalizacja -->
         <fieldset class="mb-4 border-start border-3 ps-3 border-primary-subtle">
             <legend class="fs-5 mb-3">{% translate "Lokalizacja" %}</legend>
 
@@ -113,7 +110,6 @@
             </div>
         </fieldset>
 
-        <!-- Organizacja -->
         <fieldset class="mb-4 border-start border-3 ps-3 border-primary-subtle">
             <legend class="fs-5 mb-3">{% translate "Organizacja" %}</legend>
 
@@ -142,7 +138,6 @@
             </div>
         </fieldset>
 
-        <!-- Pojemność -->
         <fieldset class="mb-4 border-start border-3 ps-3 border-primary-subtle">
             <legend class="fs-5 mb-3">{% translate "Pojemność" %}</legend>
 
@@ -159,7 +154,6 @@
             </div>
         </fieldset>
 
-        <!-- Akcje -->
         <div class="d-flex justify-content-between mt-4">
             <a href="{% url 'events:monthly_events' %}" class="btn btn-secondary">
                 {% translate "Anuluj" %}
