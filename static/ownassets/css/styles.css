@@ -1,3 +1,4 @@
+
 #calendar {
   max-width: 100%;
   overflow-x: auto;
@@ -133,4 +134,10 @@
   .fc-daygrid {
     min-width: 600px;
   }
+}
+
+.breadcrumb a {
+  text-decoration: none !important;
+  color: #003d7c;
+  font-weight: bolder;
 }
