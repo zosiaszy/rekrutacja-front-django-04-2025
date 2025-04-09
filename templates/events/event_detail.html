@@ -4,43 +4,69 @@
 {% block title %}{{ event.name }}{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <h1 class="mb-3">{{ event.name }}</h1>
+<div class="container py-5 px-4 bg-white shadow rounded-3" style="max-width: 800px;">
 
-    <div class="mb-4">
-        <span class="badge text-white" style="background-color: {{ event.color|default:"#003d7c" }};">
-            {{ event.get_mode_display }}
-        </span>
-    </div>
+    <nav aria-label="{% translate 'Ścieżka nawigacyjna' %}" class="mb-4">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'events:index' %}">{% translate 'Strona główna' %}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'events:monthly_events' %}">{% translate 'Kalendarz' %}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ event.name }}</li>
+        </ol>
+    </nav>
 
-    <div class="mb-3">
-        <strong>{% translate "Data rozpoczęcia:" %}</strong>
-        {{ event.start_date|date:"d.m.Y H:i" }}
-    </div>
-    <div class="mb-3">
-        <strong>{% translate "Data zakończenia:" %}</strong>
-        {{ event.end_date|date:"d.m.Y H:i" }}
-    </div>
-    <div class="mb-3">
-        <strong>{% translate "Miejsce:" %}</strong>
-        {{ event.location }}
-    </div>
-    <div class="mb-3">
-        <strong>{% translate "Opis:" %}</strong>
-        <p>{{ event.description }}</p>
-    </div>
-    <div class="mb-3">
-        <strong>{% translate "Organizator:" %}</strong>
-        {{ event.organizer }}
-    </div>
+    <div class="card mb-4 border-0">
+        <div class="card-header text-white fw-bold fs-4" style="background-color: {{ event.color|default:'#003d7c' }};">
+            {{ event.name }}
+        </div>
+        <div class="card-body px-0 pt-4">
 
-    <div class="mt-4 d-flex gap-3">
-        <a href="{% url 'events:event_update' event.pk %}" class="btn btn-outline-primary">
-            {% translate "Edytuj wydarzenie" %}
-        </a>
-        <a href="{% url 'events:monthly_events' %}" class="btn btn-secondary">
-            {% translate "Powrót do kalendarza" %}
-        </a>
+            <div class="mb-3">
+                <strong>{% translate "Tryb:" %}</strong><br>
+                <span class="badge text-white px-3 py-2 mt-2" style="background-color: {{ event.color|default:'#003d7c' }};">
+                    {{ event.get_mode_display }}
+                </span>
+            </div>
+
+            <div class="mb-3">
+                <strong>{% translate "Data rozpoczęcia:" %}</strong><br>
+                {{ event.start_date|date:"d.m.Y H:i" }}
+            </div>
+
+            <div class="mb-3">
+                <strong>{% translate "Data zakończenia:" %}</strong><br>
+                {{ event.end_date|date:"d.m.Y H:i" }}
+            </div>
+
+            <div class="mb-3">
+                <strong>{% translate "Miejsce:" %}</strong><br>
+                {{ event.location }}
+            </div>
+
+            <div class="mb-3">
+                <strong>{% translate "Organizator:" %}</strong><br>
+                {{ event.organizer }}
+            </div>
+
+            <div class="mb-3">
+                <strong>{% translate "Liczba miejsc:" %}</strong><br>
+                {{ event.capacity }}
+            </div>
+
+            <div class="mb-3">
+                <strong>{% translate "Opis:" %}</strong>
+                <p class="mt-1">{{ event.description|linebreaks }}</p>
+            </div>
+
+        </div>
+
+        <div class="border-top-0 d-flex justify-content-between flex-wrap gap-2">
+            <a href="{% url 'events:event_update' event.pk %}" class="btn btn-outline-primary">
+                {% translate "Edytuj wydarzenie" %}
+            </a>
+            <a href="{% url 'events:monthly_events' %}" class="btn btn-secondary">
+                {% translate "Powrót do kalendarza" %}
+            </a>
+        </div>
     </div>
 </div>
 {% endblock %}
