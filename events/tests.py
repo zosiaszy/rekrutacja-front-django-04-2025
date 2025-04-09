@@ -37,7 +37,7 @@ class EventModelTests(TestCase):
     
     def test_event_get_absolute_url(self):
         """Test czy metoda get_absolute_url zwraca poprawny URL."""
-        expected_url = reverse('event_detail', args=[self.event.id])
+        expected_url = reverse('events:event_detail', args=[self.event.id])
         self.assertEqual(self.event.get_absolute_url(), expected_url)
     
     def test_is_past_for_future_event(self):
@@ -96,7 +96,7 @@ class EventViewTests(TestCase):
     
     def test_index_view(self):
         """Test czy widok index zwraca poprawny status i zawiera przyszłe wydarzenia."""
-        response = self.client.get(reverse('index'))
+        response = self.client.get(reverse('events:index'))
         self.assertEqual(response.status_code, 200)
         self.assertIn('upcoming_events', response.context)
         self.assertIn(self.future_event, response.context['upcoming_events'])
@@ -105,14 +105,14 @@ class EventViewTests(TestCase):
     
     def test_event_detail_view(self):
         """Test czy widok szczegółów wydarzenia zwraca poprawny status i dane wydarzenia."""
-        response = self.client.get(reverse('event_detail', args=[self.future_event.id]))
+        response = self.client.get(reverse('events:event_detail', args=[self.future_event.id]))
         self.assertEqual(response.status_code, 200)
         self.assertIn('event', response.context)
         self.assertEqual(response.context['event'], self.future_event)
     
     def test_event_create_view_get(self):
         """Test czy widok tworzenia wydarzenia zwraca formularz."""
-        response = self.client.get(reverse('event_create'))
+        response = self.client.get(reverse('events:event_create'))
         self.assertEqual(response.status_code, 200)
         self.assertIn('form', response.context)
     
@@ -131,7 +131,7 @@ class EventViewTests(TestCase):
         }
         
         # Wysłanie formularza
-        response = self.client.post(reverse('event_create'), event_data, follow=True)
+        response = self.client.post(reverse('events:event_create'), event_data, follow=True)
         
         # Sprawdzenie czy formularz został prawidłowo przetworzony
         self.assertEqual(response.status_code, 200)
@@ -142,7 +142,7 @@ class EventViewTests(TestCase):
     def test_event_update_view(self):
         """Test czy widok aktualizacji wydarzenia zawiera poprawne dane."""
         # Zakładamy, że URL to 'event_update' zamiast 'event_edit'
-        response = self.client.get(reverse('event_update', args=[self.future_event.id]))
+        response = self.client.get(reverse('events:event_update', args=[self.future_event.id]))
         self.assertEqual(response.status_code, 200)
         self.assertIn('form', response.context)
         self.assertEqual(response.context['form'].instance, self.future_event)
@@ -150,7 +150,7 @@ class EventViewTests(TestCase):
     def test_monthly_events_view(self):
         """Test czy widok miesięczny wydarzeń zwraca poprawny status i zawiera kalendarz."""
         # Test bez argumentów (domyślny bieżący miesiąc)
-        response = self.client.get(reverse('monthly_events'))
+        response = self.client.get(reverse('events:monthly_events'))
         self.assertEqual(response.status_code, 200)
         self.assertIn('calendar', response.context)
         self.assertIn('month_name', response.context)

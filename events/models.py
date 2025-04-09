@@ -39,7 +39,7 @@ class Event(models.Model):
         """
         Returns the URL to access a detailed record for this event.
         """
-        return reverse('event_detail', args=[str(self.pk)])
+        return reverse('events:event_detail', args=[str(self.pk)])
         
     @property
     def is_past(self):
