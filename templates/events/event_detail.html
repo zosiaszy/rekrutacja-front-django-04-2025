@@ -15,14 +15,14 @@
     </nav>
 
     <div class="card mb-4 border-0">
-        <div class="card-header text-white fw-bold fs-4" style="background-color: {{ event.color|default:'#003d7c' }};">
+        <div class="card-header text-white fw-bold fs-4"style="background-color: #003d7c">
             {{ event.name }}
         </div>
         <div class="card-body px-0 pt-4">
 
             <div class="mb-3">
                 <strong>{% translate "Tryb:" %}</strong><br>
-                <span class="badge text-white px-3 py-2 mt-2" style="background-color: {{ event.color|default:'#003d7c' }};">
+                <span class="badge text-white px-3 py-2 mt-2" style="background-color: #003d7c">
                     {{ event.get_mode_display }}
                 </span>
             </div>

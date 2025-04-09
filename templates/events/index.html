@@ -13,7 +13,7 @@
       <p>{% translate 'Zarejestruj się na wydarzenie, utwórz nowe lub sprawdź co dzieje się w Twoim otoczeniu!' %}</p>
       <div class="d-flex justify-content-center gap-3 mt-4 flex-wrap">
         <a href="{% url 'events:monthly_events' %}" class="btn btn-primary" aria-label="{% translate 'Przeglądaj wydarzenia' %}">{% translate 'Przeglądaj wydarzenia' %}</a>
-        <a href="{% url 'events:event_create' %}" class="btn btn-outline-primary" aria-label="{% translate 'Utwórz wydarzenie' %}">{% translate 'Utwórz wydarzenie' %}</a>
+        <a href="{% url 'events:event_create' %}" class="btn btn-secondary" aria-label="{% translate 'Utwórz wydarzenie' %}">{% translate 'Utwórz wydarzenie' %}</a>
       </div>
     </div>
   </section>
@@ -25,9 +25,15 @@
       <div class="row">
         {% for event in upcoming_events %}
           <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
-            <div class="card h-100" tabindex="0" role="article" aria-label="{{ event.name }}">
-              <div class="card-header text-white" style="background-color: {{ event.color|default:'#003d7c' }};">
-                <h3 class="card-title h5 mb-0">{{ event.name }}</h3>
+            <div class="card h-100" tabindex="0" aria-label="{{ event.name }}">
+              <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #003d7c">
+                <h2 class="card-title h5 mb-1 mt-1 text-white">{{ event.name }}</h2>
+                {% if event.color %}
+                  <span class="badge rounded-pill border border-white"
+                        style="background-color: {{ event.color }}; width: 25px; height: 25px;"
+                        title="{% translate 'Kolor wydarzenia' %}">
+                  </span>
+                {% endif %}
               </div>
               <div class="card-body">
                 <p class="card-text">{{ event.description|truncatewords:20 }}</p>
@@ -53,7 +59,7 @@
   </section>
 
   <section class="text-center mt-5" aria-label="{% translate 'Sekcja kalendarza' %}">
-    <a href="{% url 'events:monthly_events' %}" class="btn btn-secondary" aria-label="{% translate 'Zobacz kalendarz miesięczny' %}">
+    <a href="{% url 'events:monthly_events' %}" class="btn btn-lg btn-secondary" aria-label="{% translate 'Zobacz kalendarz miesięczny' %}">
       {% translate 'Zobacz kalendarz miesięczny' %}
     </a>
   </section>
