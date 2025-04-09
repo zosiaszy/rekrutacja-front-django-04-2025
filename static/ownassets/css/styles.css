@@ -1,1 +1,136 @@
-/* Add custom CSS here */
+#calendar {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.fc {
+  font-family: "Segoe UI", sans-serif;
+  font-size: 15px;
+}
+
+.fc .fc-col-header-cell-cushion {
+  font-weight: 700;
+  color: #003d7c;
+  text-decoration: none !important;
+}
+
+.fc a,
+.fc a:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.fc-toolbar-title {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #003d7c;
+  text-align: center;
+}
+
+.fc-button:focus,
+.fc-button:active {
+  box-shadow: 0 0 0 1px rgba(0, 61, 124, 0.3) !important;
+  outline: none !important;
+}
+
+.fc-daygrid-day-number {
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 4px;
+  color: #000 !important;
+}
+
+.fc-day-today {
+  background-color: #e8f0ff !important;
+}
+
+.fc-day-today .fc-daygrid-day-number {
+  font-weight: bold;
+  color: #003d7c !important;
+}
+
+.fc-event {
+  background-color: #003d7c !important;
+  opacity: 0.75;
+  color: #fff !important;
+  border-radius: 4px !important;
+  padding: 10px 8px !important;
+  border: none !important;
+  cursor: pointer !important;
+  font-size: 0.85rem;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  line-height: 1.2;
+}
+
+.fc-event:hover {
+  background-color: #1b559c !important;
+}
+
+.fc-event-title,
+.fc-event-time {
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.custom-tooltip {
+  position: absolute;
+  z-index: 1000;
+  background-color: #1b559c;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  pointer-events: none;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.fc-button.fc-today-button {
+  background-color: #1b559c !important;
+  color: white !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 8px 16px;
+  min-width: 120px;
+}
+
+.fc-button {
+  box-shadow: none;
+}
+
+.fc-daygrid-day {
+  min-height: 180px;
+}
+
+@media (max-width: 768px) {
+  .fc-daygrid-day {
+    min-height: 100px;
+  }
+
+  .fc .fc-toolbar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.2rem;
+    margin: 0.5rem 0;
+  }
+
+  .fc-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+
+  #calendar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .fc-daygrid {
+    min-width: 600px;
+  }
+}
