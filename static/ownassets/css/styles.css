@@ -150,7 +150,7 @@
 }
 
 #accessibility-toggle {
-  font-size: 1.8rem; /* większa ikona */
+  font-size: 1.8rem; 
   border-radius: 50%;
   padding: 0.6rem 0.75rem;
   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -217,7 +217,7 @@ body.highlight-links a {
 .navbar-nav .nav-link:hover,
 .navbar-brand:focus,
 .navbar-nav .nav-link:focus {
-  color: #ffc107 !important; /* żółty hover */
+  color: #ffc107 !important; 
   
   outline: none;
 }
