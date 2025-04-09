@@ -10,8 +10,8 @@ class Event(models.Model):
     Model representing an event in the system.
     """
     MODE_CHOICES = (
-        ('remote', _('Remote')),
-        ('in_person', _('In Person')),
+        ('remote', _('Zdalnie')),
+        ('in_person', _('Stacjonarnie')),
     )
     
     name = models.CharField(_('Name'), max_length=200)

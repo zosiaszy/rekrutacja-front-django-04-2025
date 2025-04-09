@@ -9,6 +9,7 @@ from django.views.generic import DetailView, CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Event
 from .forms import EventForm
+from django.http import JsonResponse
 
 
 def index(request):
@@ -66,10 +67,10 @@ class EventUpdateView(UpdateView):
         return context
     
     def get_success_url(self):
-        return reverse_lazy('event_detail', kwargs={'pk': self.object.pk})
+         return reverse_lazy('events:event_detail', kwargs={'pk': self.object.pk})
     
     def form_valid(self, form):
-        messages.success(self.request, _('Event updated successfully!'))
+        messages.success(self.request, _('Wydarzenie zostało pomyślnie zaktualizowane!'))
         return super().form_valid(form)
 
 
@@ -130,3 +131,22 @@ def monthly_events(request, year=None, month=None):
         'current_month': month,
         'today_date': today_date,
     })
+
+
+def api_events(request):
+    """
+    Return events in JSON format for FullCalendar.
+    """
+    events = Event.objects.all()
+    data = []
+
+    for event in events:
+        data.append({
+            "id": event.pk,
+            "title": event.name,
+            "start": event.start_date.isoformat(),
+            "end": event.end_date.isoformat(),
+            "color": event.color or "#003d7c",
+        })
+
+    return JsonResponse(data, safe=False)

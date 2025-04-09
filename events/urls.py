@@ -10,4 +10,6 @@ urlpatterns = [
     path('events/<int:pk>/edit/', views.EventUpdateView.as_view(), name='event_update'),
     path('events/monthly/', views.monthly_events, name='monthly_events'),
     path('events/monthly/<int:year>/<int:month>/', views.monthly_events, name='monthly_events_date'),
+    path('api/events/', views.api_events, name='api_events'),
+
 ]
